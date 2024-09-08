@@ -1,0 +1,32 @@
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: echoserver
+#   namespace: echoserver
+#   annotations:
+#     alb.ingress.kubernetes.io/scheme: internet-facing
+#     alb.ingress.kubernetes.io/target-type: ip
+#     # Adding tags to subnets for auto-discovery(instead of alb.ingress.kubernetes.io/subnets annotation)
+#     # https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.8/examples/echo_server/
+#     # Node가 있는 서브넷으로 지정되게 해야한다.
+#     alb.ingress.kubernetes.io/subnets: subnet-0c036157664e890b7, subnet-06c0836a074054660, subnet-0c64e19e84f5d0461
+#     alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
+# spec:
+#   ingressClassName: alb
+#   rules:
+#     - http:
+#         paths:
+#           - path: /
+#             pathType: Exact
+#             backend:
+#               service:
+#                 name: echoserver
+#                 port:
+#                   number: 80
+#           - path: /user
+#             pathType: Exact
+#             backend:
+#               service:
+#                 name: echoserver
+#                 port:
+#                   number: 80

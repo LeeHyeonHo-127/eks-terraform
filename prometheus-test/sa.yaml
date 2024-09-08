@@ -1,0 +1,19 @@
+apiVersion: v1
+automountServiceAccountToken: true
+kind: ServiceAccount
+metadata:
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::058264317535:role/loki-role
+    meta.helm.sh/release-name: loki-stack
+    meta.helm.sh/release-namespace: prometheus
+  creationTimestamp: "2024-08-03T10:08:44Z"
+  labels:
+    app: loki
+    app.kubernetes.io/managed-by: Helm
+    chart: loki-2.16.0
+    heritage: Helm
+    release: loki-stack
+  name: loki-sa
+  namespace: prometheus
+  resourceVersion: "31777"
+  uid: cddbca38-87c2-4f8d-9398-6dc2aa6c0fec
